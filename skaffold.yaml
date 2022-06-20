@@ -1,0 +1,50 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./manifests/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: prantab/accounts
+      context: ./services/accounts
+      docker: 
+        dockerfile: ./dockerfiles/accounts.dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: prantab/inventory
+      context: ./services/inventory
+      docker: 
+        dockerfile: ./dockerfiles/inventory.dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: prantab/products
+      context: products
+      docker: 
+        dockerfile: ./dockerfiles/products.dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: prantab/reviews
+      context: reviews
+      docker: 
+        dockerfile: ./dockerfiles/reviews.dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: prantab/gateway
+      context: gateway
+      docker: 
+        dockerfile: ./dockerfiles/gateway.dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
