@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
 WORKDIR /app
-RUN mkdir inventory
+
 COPY package.json ./package.json
 COPY lerna.json ./lerna.json
 COPY services/inventory ./services/inventory

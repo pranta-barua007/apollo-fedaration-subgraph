@@ -9,42 +9,42 @@ build:
     push: false
   artifacts:
     - image: prantab/accounts
-      context: ./services/accounts
-      docker: 
+      context: .
+      docker:
         dockerfile: ./dockerfiles/accounts.dockerfile
       sync:
         manual:
-          - src: './**/*.js'
-            dest: .
+          - src: "./services/accounts/**/*.js"
+            dest: "."
     - image: prantab/inventory
-      context: ./services/inventory
-      docker: 
+      context: .
+      docker:
         dockerfile: ./dockerfiles/inventory.dockerfile
       sync:
         manual:
-          - src: './**/*.js'
+          - src: "./services/inventory/**/*.js"
             dest: .
     - image: prantab/products
-      context: products
-      docker: 
+      context: .
+      docker:
         dockerfile: ./dockerfiles/products.dockerfile
       sync:
         manual:
-          - src: './**/*.js'
+          - src: "./services/products/**/*.js"
             dest: .
     - image: prantab/reviews
-      context: reviews
-      docker: 
+      context: .
+      docker:
         dockerfile: ./dockerfiles/reviews.dockerfile
       sync:
         manual:
-          - src: './**/*.js'
+          - src: "./services/reviews/**/*.js"
             dest: .
     - image: prantab/gateway
-      context: gateway
-      docker: 
+      context: ./
+      docker:
         dockerfile: ./dockerfiles/gateway.dockerfile
       sync:
         manual:
-          - src: './**/*.js'
+          - src: "./**/*.js"
             dest: .
